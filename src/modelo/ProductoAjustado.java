@@ -15,7 +15,7 @@ public class ProductoAjustado implements Producto {
 
     public String getNombre() {
         // TODO
-
+        return null;
     }
 
     public int getPrecio() {

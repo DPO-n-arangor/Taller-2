@@ -23,29 +23,28 @@ public class Restaurante {
     }
 
     public void iniciarPedido(String nombreCliente, String direccionCliente) {
-    	//TODO
+        // TODO
 
     }
 
     public void cerrarYGuardarPedido() {
-    	//TODO
+        // TODO
 
     }
 
     public Pedido getPedidoEnCurso() {
-    	//TODO
+        // TODO
         return null;
 
     }
 
     public ArrayList<Producto> getMenuBase() {
-    	//TODO
-        return null;
+        //
 
     }
 
     public ArrayList<Ingrediente> getIngredientes() {
-    	//TODO
+        // TODO
         return null;
     }
 
@@ -76,6 +75,7 @@ public class Restaurante {
                 ingredientes.put(nombre, ingrediente0);
                 linea = lector.readLine();
             }
+            System.out.print("\nSe cargaron " + ingredientes.size() + " ingredientes, ");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,6 +96,7 @@ public class Restaurante {
                     menuBase.put(nombre, precio);
                     linea = lector.readLine();
                 }
+                System.out.print(menuBase.size() + " productos de menú");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -116,6 +117,7 @@ public class Restaurante {
                     combos.put(nombre, combitos);
                     linea = lector.readLine();
                 }
+                System.out.println(" y " + combos.size() + " combos!");
             }
         } catch (IOException e) {
             e.printStackTrace();

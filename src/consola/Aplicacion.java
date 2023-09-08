@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 import modelo.Combo;
 import modelo.Ingrediente;
+import modelo.Pedido;
 import modelo.Producto;
 import modelo.ProductoAjustado;
 import modelo.ProductoMenu;
@@ -15,9 +16,10 @@ import modelo.Restaurante;
 
 public class Aplicacion {
     private Restaurante info;
+    private Pedido pedido;
 
     public void ejecutarOpcion() {
-        System.out.println("Restaurante de Hamburguesas");
+        System.out.println("\n* Restaurante de Hamburguesas *");
 
         boolean continuar = true;
         while (continuar) {
@@ -30,17 +32,19 @@ public class Aplicacion {
                     File menu = new File("./data/menu.txt");
                     File ingredientes = new File("./data/ingredientes.txt");
                     info.cargarInformacionRestaurante(ingredientes, menu, combos);
-                    System.out.println("Información cargada correctamente");
+                    System.out.println("\n* Información cargada correctamente *\n");
                 } else if (opcionSelenccionada == 2)
                     info.getMenuBase();
                 else if (opcionSelenccionada == 3)
                     info.iniciarPedido(input("Ingrese el nombre del cliente"),
                             input("Ingrese la dirección del cliente"));
                 else if (opcionSelenccionada == 4)
-                    info.getPedidoEnCurso();
+                    pedido.agregarProducto();
                 else if (opcionSelenccionada == 5)
                     info.cerrarYGuardarPedido();
-                else if (opcionSelenccionada == 6) {
+                else if (opcionSelenccionada == 6)
+                    pedido.getIdPedido();
+                else if (opcionSelenccionada == 0) {
                     continuar = false;
                     System.out.println("Gracias por usar la aplicación...");
                 } else {
@@ -65,12 +69,13 @@ public class Aplicacion {
     }
 
     public void mostrarMenu() {
-        System.out.println("1. Cargar datos restaurante");
+        System.out.println("\n1. Cargar datos restaurante");
         System.out.println("2. Mostrar menú");
         System.out.println("3. Iniciar nuevo pedido");
         System.out.println("4. Agregar elemento a un pedido");
         System.out.println("5. Cerrar pedido y guardar factura");
-        System.out.println("6. Salir");
+        System.out.println("6. Consultar la información de un pedido por id");
+        System.out.println("0. Salir\n");
     }
 
     public static void main(String[] args) {
