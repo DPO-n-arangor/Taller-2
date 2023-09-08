@@ -39,7 +39,7 @@ public class Aplicacion {
                     info.iniciarPedido(input("Ingrese el nombre del cliente"),
                             input("Ingrese la dirección del cliente"));
                 else if (opcionSelenccionada == 4)
-                    pedido.agregarProducto();
+                    info.cargarInformacionRestaurante(null, null, null);
                 else if (opcionSelenccionada == 5)
                     info.cerrarYGuardarPedido();
                 else if (opcionSelenccionada == 6)
