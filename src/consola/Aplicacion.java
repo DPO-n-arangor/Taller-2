@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import modelo.Combo;
 import modelo.Ingrediente;
@@ -20,22 +21,22 @@ public class Aplicacion {
 
     public void ejecutarOpcion() {
         System.out.println("\n* Restaurante de Hamburguesas *");
-
+        info = new Restaurante();
         boolean continuar = true;
         while (continuar) {
             try {
                 mostrarMenu();
                 int opcionSelenccionada = Integer.parseInt(input("Seleccione una opción"));
-                info = new Restaurante();
                 if (opcionSelenccionada == 1) {
                     File combos = new File("./data/combos.txt");
                     File menu = new File("./data/menu.txt");
                     File ingredientes = new File("./data/ingredientes.txt");
                     info.cargarInformacionRestaurante(ingredientes, menu, combos);
                     System.out.println("\n* Información cargada correctamente *\n");
-                } else if (opcionSelenccionada == 2)
+                } else if (opcionSelenccionada == 2) {
                     info.getMenuBase();
-                else if (opcionSelenccionada == 3)
+                    System.out.println("---------------------------\n");
+                } else if (opcionSelenccionada == 3)
                     info.iniciarPedido(input("Ingrese el nombre del cliente"),
                             input("Ingrese la dirección del cliente"));
                 else if (opcionSelenccionada == 4)

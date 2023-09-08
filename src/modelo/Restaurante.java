@@ -13,7 +13,6 @@ public class Restaurante {
     private HashMap<String, ProductoMenu> menuBase;
     private HashMap<String, Combo> combos;
     private HashMap<Integer, Pedido> pedidos;
-    private double descuentos;
 
     public Restaurante() {
         ingredientes = new HashMap<>();
@@ -21,58 +20,6 @@ public class Restaurante {
         combos = new HashMap<>();
         pedidos = new HashMap<>();
 
-    }
-
-    public void iniciarPedido(String nombreCliente, String direccionCliente) {
-        Pedido pedido = new Pedido(nombreCliente, direccionCliente);
-        pedidos.put(pedido.getIdPedido(), pedido);
-        System.out.println("Pedido iniciado con el id: " + pedido.getIdPedido());
-        System.out.println("Ingrese el nombre del producto que desea agregar al pedido");
-        System.out.println("Ingrese 0 para terminar el pedido");
-        String producto = input("Ingrese el nombre del producto");
-        while (!producto.equals("0")) {
-            if (menuBase.containsKey(producto)) {
-                pedido.agregarProducto(menuBase.get(producto));
-            } else if (combos.containsKey(producto)) {
-                pedido.agregarProducto(combos.get(producto));
-            } else {
-                System.out.println("El producto ingresado no existe");
-            }
-            producto = input("Ingrese el nombre del producto");
-        }
-        System.out.println("Pedido terminado");
-    }
-
-    public void cerrarYGuardarPedido() {
-        // TODO
-
-    }
-
-    public Pedido getPedidoEnCurso() {
-        // TODO
-        return null;
-    }
-
-    public ArrayList<Producto> getMenuBase() {
-        ArrayList<Producto> opciones = new ArrayList<>();
-        for (String i : menuBase.keySet()) {
-            opciones.add(menuBase.get(i));
-        }
-        for (String i : combos.keySet()) {
-            opciones.add(combos.get(i));
-        }
-        for (String i : ingredientes.keySet()) {
-            opciones.add((Producto) ingredientes.get(i));
-        }
-        for (int i = 0; i < opciones.size(); i++) {
-            System.out.println((i + 1) + ". " + opciones.get(i).getNombre());
-        }
-        return opciones;
-    }
-
-    public ArrayList<Ingrediente> getIngredientes() {
-        // TODO
-        return null;
     }
 
     public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
@@ -160,6 +107,67 @@ public class Restaurante {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void iniciarPedido(String nombreCliente, String direccionCliente) {
+        Pedido pedido = new Pedido(nombreCliente, direccionCliente);
+        pedidos.put(pedido.getIdPedido(), pedido);
+        System.out.println("Pedido iniciado con el id: " + pedido.getIdPedido());
+        System.out.println("Ingrese el nombre del producto que desea agregar al pedido");
+        String producto = input("Ingrese el nombre del producto o 0 para terminar el pedido");
+        while (!producto.equals("0")) {
+            if (menuBase.containsKey(producto)) {
+                pedido.agregarProducto(menuBase.get(producto));
+            } else {
+                System.out.println("El producto ingresado no existe");
+            }
+            producto = input("Ingrese el nombre del producto");
+        }
+        System.out.println("Pedido terminado");
+
+    }
+
+    public void cerrarYGuardarPedido() {
+        // TODO
+
+    }
+
+    public Pedido getPedidoEnCurso() {
+        // TODO
+        return null;
+    }
+
+    public ArrayList<Producto> getMenuBase() {
+        ArrayList<Producto> opciones = new ArrayList<>();
+        for (String i : menuBase.keySet()) {
+            opciones.add(menuBase.get(i));
+        }
+        for (int i = 0; i < opciones.size(); i++) {
+            System.out.println((i + 1) + ". " + opciones.get(i).getNombre());
+        }
+        return opciones;
+    }
+
+    public ArrayList<Ingrediente> getIngredientes() {
+        ArrayList<Ingrediente> opciones = new ArrayList<>();
+        for (String i : ingredientes.keySet()) {
+            opciones.add(ingredientes.get(i));
+        }
+        for (int i = 0; i < opciones.size(); i++) {
+            System.out.println((i + 1) + ". " + opciones.get(i).getNombre());
+        }
+        return opciones;
+    }
+
+    public ArrayList<Combo> getCombos() {
+        ArrayList<Combo> opciones = new ArrayList<>();
+        for (String i : combos.keySet()) {
+            opciones.add(combos.get(i));
+        }
+        for (int i = 0; i < opciones.size(); i++) {
+            System.out.println((i + 1) + ". " + opciones.get(i).getNombre());
+        }
+        return opciones;
     }
 
 }

@@ -21,10 +21,12 @@ public class Pedido {
     }
 
     public void agregarProducto(Producto nuevoItem) {
-        // TODO
+        itemsPedido.add(nuevoItem.getNombre());
     }
 
     private int getPrecioNetoPedido() {
+        // sacar el precio neto del pedido actual tomando en cuenta todos los productos
+        // que se agregaron y su valor
         // TODO
         return 0;
     }
