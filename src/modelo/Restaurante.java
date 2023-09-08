@@ -58,8 +58,7 @@ public class Restaurante {
     }
 
     public ArrayList<Producto> getMenuBase() {
-        // mostrar las opciones del menu base de 1 a 22 donde el usuario ingresa el
-        // numero del producto que desea en la funcion iniciarPedido
+
         ArrayList<Producto> menu = new ArrayList<>();
         for (ProductoMenu producto : menuBase.values()) {
             menu.add(producto);
@@ -75,7 +74,6 @@ public class Restaurante {
 
     public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
         try {
-            // cargar tres archivos siendo ingredientes.txt, menu.txt y combos.txt
             cargarIngredientes(archivoIngredientes);
             cargarMenu(archivoMenu);
             cargarCombos(archivoCombos);
