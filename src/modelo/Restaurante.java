@@ -23,24 +23,29 @@ public class Restaurante {
     }
 
     public void iniciarPedido(String nombreCliente, String direccionCliente) {
+    	//TODO
 
     }
 
     public void cerrarYGuardarPedido() {
+    	//TODO
 
     }
 
     public Pedido getPedidoEnCurso() {
+    	//TODO
         return null;
 
     }
 
     public ArrayList<Producto> getMenuBase() {
+    	//TODO
         return null;
 
     }
 
     public ArrayList<Ingrediente> getIngredientes() {
+    	//TODO
         return null;
     }
 

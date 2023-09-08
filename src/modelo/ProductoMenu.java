@@ -20,6 +20,7 @@ public class ProductoMenu implements Producto {
     }
 
     public String generarTextoFactura() {
+    	//TODO
         return nombre;
 
     }

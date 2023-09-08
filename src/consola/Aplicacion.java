@@ -30,9 +30,17 @@ public class Aplicacion {
                     File menu = new File("./data/menu.txt");
                     File ingredientes = new File("./data/ingredientes.txt");
                     info.cargarInformacionRestaurante(ingredientes, menu, combos);
+                    System.out.println("Información cargada correctamente");
                 } else if (opcionSelenccionada == 2)
-                    cargarMenu();
-                else if (opcionSelenccionada == 10) {
+                    info.getMenuBase();
+                else if (opcionSelenccionada == 3)
+                    info.iniciarPedido(input("Ingrese el nombre del cliente"),
+                            input("Ingrese la dirección del cliente"));
+                else if (opcionSelenccionada == 4)
+                    info.getPedidoEnCurso();
+                else if (opcionSelenccionada == 5)
+                    info.cerrarYGuardarPedido();
+                else if (opcionSelenccionada == 6) {
                     continuar = false;
                     System.out.println("Gracias por usar la aplicación...");
                 } else {
@@ -57,17 +65,12 @@ public class Aplicacion {
     }
 
     public void mostrarMenu() {
-        System.out.println("1. Cargar Menu");
-        System.out.println("2. Cargar Pedido");
-        System.out.println("3. Cargar Factura");
-        System.out.println("4. Salir");
-    }
-
-    // private void cargarIngredientes() {
-
-    // }
-
-    private void cargarMenu() {
+        System.out.println("1. Cargar datos restaurante");
+        System.out.println("2. Mostrar menú");
+        System.out.println("3. Iniciar nuevo pedido");
+        System.out.println("4. Agregar elemento a un pedido");
+        System.out.println("5. Cerrar pedido y guardar factura");
+        System.out.println("6. Salir");
     }
 
     public static void main(String[] args) {
