@@ -24,10 +24,6 @@ public class Restaurante {
     }
 
     public void iniciarPedido(String nombreCliente, String direccionCliente) {
-        // iniciar pedido con el nombre y la direccion del cliente y almacenarlo en el
-        // mapa de pedidos. la llave es el id del pedido y el valor es el pedido. se le
-        // pregunta al usuario el pedido que desea hacer tomando en cuenta las opciones
-        // del menu
         Pedido pedido = new Pedido(nombreCliente, direccionCliente);
         pedidos.put(pedido.getIdPedido(), pedido);
         System.out.println("Pedido iniciado con el id: " + pedido.getIdPedido());
@@ -58,13 +54,20 @@ public class Restaurante {
     }
 
     public ArrayList<Producto> getMenuBase() {
-
-        ArrayList<Producto> menu = new ArrayList<>();
-        for (ProductoMenu producto : menuBase.values()) {
-            menu.add(producto);
+        ArrayList<Producto> opciones = new ArrayList<>();
+        for (String i : menuBase.keySet()) {
+            opciones.add(menuBase.get(i));
         }
-        return menu;
-
+        for (String i : combos.keySet()) {
+            opciones.add(combos.get(i));
+        }
+        for (String i : ingredientes.keySet()) {
+            opciones.add((Producto) ingredientes.get(i));
+        }
+        for (int i = 0; i < opciones.size(); i++) {
+            System.out.println((i + 1) + ". " + opciones.get(i).getNombre());
+        }
+        return opciones;
     }
 
     public ArrayList<Ingrediente> getIngredientes() {
